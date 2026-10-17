@@ -82,6 +82,23 @@ flowchart LR
 - **Example: stretch VLAN 50 to DC3** = add `50` to `stretched_vlans` on both gateways and to `vlans:` on dc3-leaf1. Render, preview, apply.
 - **Example: add a leaf** = one device entry with its `uplinks:`; both spines get the new downlink, underlay and EVPN neighbor automatically.
 
+## Diagrams and design documents
+
+| | |
+|---|---|
+| ![3-DC design](docs/diagrams/3DC_Metro_DR_Design.png) | ![DC1-DC3 L2 extension](docs/diagrams/DC1_DC3_L2_Extension_EVPN_GW.png) |
+| **3-DC design**: metro twin + DR site | **DC1 ↔ DC3 L2 extension** through EVPN gateways |
+| ![VLAN 40 IPs](docs/diagrams/VLAN40_Stretch_IP_Diagram.png) | ![Control vs data plane](docs/diagrams/VLAN40_Stretch_ControlPlane_DataPlane.png) |
+| **VLAN 40 stretch**: every IP, tunnel and route stamp | **Control plane vs data plane** for the stretch |
+| ![Route types](docs/diagrams/Route_Type_Flows.png) | ![L2 stretch explained](docs/diagrams/L2_Stretch_EVPN_Gateway_Explained.png) |
+| **EVPN route types** per segment | **L2 stretch via gateway**, explained |
+| ![MLAG](docs/diagrams/MLAG_EVPN_Explained.png) | ![ESI Type-1/4](docs/diagrams/EVPN_Type1_Type4_Explained.png) |
+| **MLAG** with EVPN (leaf1/leaf2) | **EVPN multihoming**: Type-1 / Type-4 (leaf4/leaf5) |
+
+Design documents (Word):
+- [DC1 ↔ DC3 Metro DCI with EVPN Gateways](docs/DC1_DC3_Metro_DCI_EVPN_Gateway.docx): goals, design, configuration walkthrough, route types, test results
+- [VLAN 40 Stretch DC1 ↔ DC3](docs/VLAN40_Stretch_DC1_DC3_EVPN.docx): end-to-end packet and route walk-through
+
 ## Repository layout
 
 | Path | What |
