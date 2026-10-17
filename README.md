@@ -16,6 +16,12 @@ as an **atomic full-config replace**. Drift is detected and reverted; changes ar
 
 ## Topology
 
+![3-DC topology](docs/diagrams/Topology.svg)
+
+<sub>Editable source: [docs/diagrams/Topology.drawio](docs/diagrams/Topology.drawio) (open in diagrams.net; File → Export as → VSDX for Visio)</sub>
+
+<details><summary>Simplified view (Mermaid)</summary>
+
 ```mermaid
 flowchart TB
   SALT[["Salt master · NAPALM proxies<br/>manages all 11 switches over OOB mgmt (eAPI)"]]
@@ -53,6 +59,8 @@ flowchart TB
   BL1 ===|"Metro 172.16.230.0/31<br/>EVPN gateway: VLAN 40 L2 + Type-5"| BL3
   BL1 ---|"VRF-lite 172.16.200.0/31"| BL2
 ```
+
+</details>
 
 L1/L2 = MLAG pair (shared VTEP) · L4/L5 = EVPN all-active ESI-LAG (Type-1/Type-4) · details in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 
