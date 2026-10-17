@@ -16,7 +16,7 @@ as an **atomic full-config replace**. Drift is detected and reverted; changes ar
 
 ## Topology
 
-![3-DC topology](docs/diagrams/Topology.svg)
+![3-DC topology](docs/diagrams/Topology.png)
 
 <sub>Editable source: [docs/diagrams/Topology.drawio](docs/diagrams/Topology.drawio) (open in diagrams.net; File → Export as → VSDX for Visio)</sub>
 
