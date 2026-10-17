@@ -1,4 +1,4 @@
-# Arista EVPN-VXLAN Multi-DC Fabric, Automated with SaltStack
+# AI-ready Arista EVPN-VXLAN Multi-Site Fabric, Automated with SaltStack
 
 A three-data-center Arista EVPN-VXLAN network built in EVE-NG and managed end to end by **SaltStack + NAPALM**.
 Every switch configuration is **rendered from a single source of truth** (pillar data + Jinja templates) and pushed
@@ -147,6 +147,37 @@ sudo salt -N switches state.apply fabric test=True     # 7. whole-lab drift chec
 | **`eos_train` per device** | EOS 4.36 shows different default lines than 4.31; one attribute instead of forking the template |
 | **Secrets out of git** | eAPI credentials and password hashes live only on the master (`_creds.yaml`, `users.sls`); backups are stored redacted |
 
+## AI-ready fabric
+
+### Where this design fits in an AI data center
+An AI data center runs two networks. This repo builds the first one and is structured to extend to the second.
+
+| Network | Job | In this repo |
+|---|---|---|
+| **Front-end + storage + DCI** | Users, APIs, data ingest, checkpoint/storage traffic, multi-site resilience | ✅ This fabric: EVPN-VXLAN, VRFs, anycast gateway, RFC 9014 multi-site gateway, BFD |
+| **Back-end (GPU fabric)** | GPU-to-GPU collective traffic (all-reduce, all-to-all) over RoCEv2 | Roadmap: design + pillar-driven templates (below) |
+
+Design choices that matter for AI workloads:
+- **Multi-site EVPN gateway**: each site stays its own failure domain, and only what must be shared (a stretched VLAN, routed prefixes) crosses the DCI.
+- **Pure L3 eBGP underlay with wide ECMP** (`maximum-paths 4 ecmp 64`), the same scale-out pattern GPU back-ends use.
+- **One source of truth**: VNIs, RTs, anycast gateways and peerings are generated, so a new leaf is one pillar entry. At AI-cluster scale (hundreds of racks) configuration has to be generated, not typed.
+- **Fast failure detection**: BFD on every EVPN session, atomic config commits, zero-drift enforcement.
+
+### What an AI back-end adds, and how this model extends to it
+
+| Requirement | Why it matters | How it maps to this repo |
+|---|---|---|
+| Lossless Ethernet for RoCEv2 | RDMA collectives stall on packet loss | Pillar `qos:` profile rendering PFC on the no-drop class, ECN thresholds and DCQCN, through the same templates |
+| Rail-optimized topology | Each GPU NIC rail lands on its own leaf | `uplinks:` already generates the spine side; add a `rail:` attribute |
+| 400G/800G, buffers, load balancing | Few, very large (elephant) flows | Per-platform defaults, the same mechanism as `eos_train` |
+| Telemetry | Spot congestion and PFC storms early | gNMI → Prometheus → Grafana (roadmap) |
+
+vEOS-lab cannot emulate lossless behaviour, so back-end templates are validated by offline render/diff here and belong on hardware for real testing.
+
+### AI in operations
+- **Built with AI assistance, under guardrails.** An AI assistant helped draft templates, diffs and documentation. Nothing reached a switch without the offline `render.py` diff, the EOS `test=True` diff and human approval, applied one switch at a time.
+- **Roadmap: "ask the network" AIOps assistant.** An LLM with **read-only** Salt tools (BGP/EVPN state, drift, configs) for natural-language troubleshooting ("why can't VPC7 reach DC2?"). Any change it suggests is only a pillar diff that goes through render → `test=True` → human approval.
+
 ## Project phases
 
 - [x] **1–3** Salt master, NAPALM proxy minions, repo with pillar as source of truth
@@ -157,6 +188,8 @@ sudo salt -N switches state.apply fabric test=True     # 7. whole-lab drift chec
 - [ ] internet-rtr (IOSv) via NAPALM `ios`
 - [ ] Streaming telemetry: gNMI → gnmic → Prometheus → Grafana, Salt deploys annotated
 - [ ] Event-driven: syslog/napalm-logs + Salt reactor (drift auto-revert, BGP-down diagnostics, DCI failover check)
+- [ ] AI-ready back-end: pillar-driven QoS for RoCEv2 (PFC / ECN / DCQCN) + rail-optimized leaf model
+- [ ] AIOps: "ask the network" LLM assistant with read-only Salt tools and human-approved changes
 - [ ] GPG-encrypted pillar · CI (render + lint on every pull request)
 
 ## Lab environment
