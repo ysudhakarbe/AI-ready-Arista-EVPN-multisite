@@ -95,9 +95,9 @@ flowchart LR
 | ![MLAG](docs/diagrams/MLAG_EVPN_Explained.png) | ![ESI Type-1/4](docs/diagrams/EVPN_Type1_Type4_Explained.png) |
 | **MLAG** with EVPN (leaf1/leaf2) | **EVPN multihoming**: Type-1 / Type-4 (leaf4/leaf5) |
 
-Design documents (Word):
-- [DC1 ↔ DC3 Metro DCI with EVPN Gateways](docs/DC1_DC3_Metro_DCI_EVPN_Gateway.docx): goals, design, configuration walkthrough, route types, test results
-- [VLAN 40 Stretch DC1 ↔ DC3](docs/VLAN40_Stretch_DC1_DC3_EVPN.docx): end-to-end packet and route walk-through
+Design documents (PDF, readable in the browser; Word versions linked):
+- [DC1 ↔ DC3 Metro DCI with EVPN Gateways](docs/DC1_DC3_Metro_DCI_EVPN_Gateway.pdf) ([Word](docs/DC1_DC3_Metro_DCI_EVPN_Gateway.docx)): goals, design, configuration walkthrough, route types, test results
+- [VLAN 40 Stretch DC1 ↔ DC3](docs/VLAN40_Stretch_DC1_DC3_EVPN.pdf) ([Word](docs/VLAN40_Stretch_DC1_DC3_EVPN.docx)): end-to-end packet and route walk-through
 
 ## Repository layout
 
