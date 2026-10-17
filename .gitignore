@@ -1,0 +1,10 @@
+# secrets - live only on the Salt master
+pillar/devices/_creds.yaml
+pillar/users.sls
+backups/raw/
+# local junk
+*.tgz
+*.b64
+__pycache__/
+*.pyc
+.venv/

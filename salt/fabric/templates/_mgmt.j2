@@ -1,0 +1,20 @@
+{#- Out-of-band management: VRF, eAPI, Management1. Never remove - Salt reaches the switch through it. -#}
+vrf instance {{ g.mgmt.vrf }}
+!
+{% if d.role != 'spine' -%}
+{% for vrf in g.vrfs | sort -%}
+vrf instance {{ vrf }}
+!
+{% endfor -%}
+{% endif -%}
+management api http-commands
+   no shutdown
+   !
+   vrf {{ g.mgmt.vrf }}
+      no shutdown
+!
+interface Management1
+   description OOB-to-home-LAN
+   vrf {{ g.mgmt.vrf }}
+   ip address {{ d.mgmt_ip }}/{{ g.mgmt.prefixlen }}
+!

@@ -1,0 +1,8 @@
+{#- Common bottom: management default route, SSH in MGMT VRF. -#}
+ip route vrf {{ g.mgmt.vrf }} 0.0.0.0/0 {{ g.mgmt.gateway }}
+!
+management ssh
+   vrf {{ g.mgmt.vrf }}
+      no shutdown
+!
+end

@@ -1,0 +1,316 @@
+{#- ===================== LEAF / BORDER LEAF =====================
+    VTEP + anycast gateway. Sections appear only when the device has the data:
+      mlag:        -> peer-link, VLAN 4090/4091, iBGP, shared VTEP router-MAC
+      esi_lags:    -> EVPN all-active multihoming (Type-1/Type-4)
+      access_ports -> host ports
+      external_*   -> border leaf: VRF-lite peers (internet, DCI), policies
+      uplinks      -> eBGP underlay + EVPN to the upstream devices (spines, or a hub border leaf)
+      (generated)  -> HUB: if other devices list THIS switch as their uplink peer (DC2/DC3,
+                      no spines), the downlinks and BGP neighbors are generated from their data
+      dci_gateway  -> EVPN multi-domain gateway (RFC 9014): metro underlay, 'domain remote'
+                      peer, stretched VLANs with remote RD/RT, VRF 'domain all' RTs (EOS 4.36+)
+      vrf_loopbacks-> loopback inside a VRF (keeps a VRF with no SVIs active)
+-#}
+{%- set name = pillar.hostname -%}
+{%- set f = pillar.fabric -%}
+{%- set g = f['global'] -%}
+{%- set d = f.devices[name] -%}
+{%- set uplinks = d.uplinks | default([]) -%}
+{#- upstream EVPN/underlay peers = the unique devices my uplinks land on -#}
+{%- set upstream = [] -%}
+{%- for u in uplinks -%}
+{%- set pd = f.devices[u.peer] -%}
+{%- if u.peer not in upstream | map(attribute='name') | list -%}
+{%- do upstream.append({'name': u.peer, 'lo0': pd.lo0, 'asn': g.spine_asn if pd.role == 'spine' else pd.asn}) -%}
+{%- endif -%}
+{%- endfor -%}
+{%- set up_asn = upstream[0].asn if upstream else none -%}
+{#- downstream (hub role): every device whose uplink lands on me -#}
+{%- set downlinks = [] -%}
+{%- for dn, dd in f.devices | dictsort -%}
+{%- for u in dd.uplinks | default([]) if u.peer == name -%}
+{%- do downlinks.append({'name': dn, 'asn': dd.asn, 'lo0': dd.lo0, 'intf': u.peer_intf, 'peer_intf': u.intf, 'ip': u.peer_ip, 'peer_ip': u.ip.split('/')[0]}) -%}
+{%- endfor -%}
+{%- endfor -%}
+{%- set gw = d.dci_gateway | default(none) -%}
+{%- set my_vlans = [] -%}
+{%- for v in g.vlans if v.id in d.vlans -%}{%- do my_vlans.append(v) -%}{%- endfor -%}
+{%- set gw_vlans = [] -%}
+{%- for v in g.vlans if gw and v.id in gw.stretched_vlans -%}{%- do gw_vlans.append(v) -%}{%- endfor -%}
+{%- set m = d.mlag | default(none) -%}
+{% include 'fabric/templates/_header.j2' %}
+{% for v in (my_vlans + gw_vlans) | sort(attribute='id') -%}
+vlan {{ v.id }}
+   name {{ v.name }}
+!
+{% endfor -%}
+{% if m -%}
+vlan 4090
+   name mlag-peer
+   trunk group mlag-peer
+!
+vlan 4091
+   name mlag-ibgp
+   trunk group mlag-peer
+!
+{% endif -%}
+{% include 'fabric/templates/_mgmt.j2' %}
+{# ---------------- port-channels ---------------- #}
+{% if m -%}
+interface Port-Channel999
+   description MLAG peer-link to {{ m.peer }}
+   switchport mode trunk
+   switchport trunk group mlag-peer
+   spanning-tree link-type point-to-point
+!
+{% endif -%}
+{% for e in d.esi_lags | default([]) -%}
+interface Port-Channel{{ e.po }}
+   description {{ e.description }}
+   switchport access vlan {{ e.vlan }}
+   !
+   evpn ethernet-segment
+      identifier {{ e.esi }}
+      route-target import {{ e.rt }}
+   port-channel lacp fallback individual
+   port-channel lacp fallback timeout 30
+   lacp system-id {{ e.lacp_sysid }}
+   spanning-tree portfast
+   spanning-tree bpdufilter enable
+!
+{% endfor -%}
+{# ---------------- ethernet ---------------- #}
+{% for p in d.access_ports | default([]) -%}
+interface {{ p.intf }}
+   description {{ p.description }}
+   switchport access vlan {{ p.vlan }}
+!
+{% endfor -%}
+{% for e in d.esi_lags | default([]) -%}
+{% for mem in e.members -%}
+interface {{ mem.intf }}
+   description {{ mem.description }}
+   channel-group {{ e.po }} mode active
+!
+{% endfor -%}
+{% endfor -%}
+{% if m -%}
+{% for mem in m.peer_link_members -%}
+interface {{ mem }}
+   description MLAG peer-link to {{ m.peer }}
+   channel-group 999 mode active
+!
+{% endfor -%}
+{% endif -%}
+{% for u in uplinks -%}
+interface {{ u.intf }}
+   description {{ u.peer }} {{ u.peer_intf }}
+   mtu 9214
+   no switchport
+   ip address {{ u.ip }}
+!
+{% endfor -%}
+{% for l in downlinks | sort(attribute='intf') -%}
+interface {{ l.intf }}
+   description {{ l.name }} {{ l.peer_intf }}
+   mtu 9214
+   no switchport
+   ip address {{ l.ip }}/31
+!
+{% endfor -%}
+{% for l in (gw.links if gw else []) -%}
+interface {{ l.intf }}
+   description {{ l.description }}
+   mtu 9214
+   no switchport
+   ip address {{ l.ip }}
+!
+{% endfor -%}
+{% for x in d.external_interfaces | default([]) -%}
+interface {{ x.name }}
+{% if x.description is defined %}   description {{ x.description }}
+{% endif -%}
+{% if x.encapsulation is defined %}   encapsulation dot1q vlan {{ x.encapsulation }}
+{% else %}{% if x.mtu is defined %}   mtu {{ x.mtu }}
+{% endif %}   no switchport
+{% endif -%}
+{% if x.vrf is defined %}   vrf {{ x.vrf }}
+{% endif -%}
+{% if x.ip is defined %}   ip address {{ x.ip }}
+{% endif -%}
+!
+{% endfor -%}
+{# ---------------- loopbacks / SVIs / VXLAN ---------------- #}
+interface Loopback0
+   description EVPN router-id
+   ip address {{ d.lo0 }}/32
+!
+interface Loopback1
+   description VTEP
+   ip address {{ d.vtep }}/32
+!
+{% for lo in d.vrf_loopbacks | default([]) -%}
+interface Loopback{{ lo.id }}
+   description {{ lo.description }}
+   vrf {{ lo.vrf }}
+   ip address {{ lo.ip }}
+!
+{% endfor -%}
+{% for v in my_vlans -%}
+interface Vlan{{ v.id }}
+   vrf {{ v.vrf }}
+   ip address virtual {{ v.gateway }}
+!
+{% endfor -%}
+{% if m -%}
+interface Vlan4090
+   no autostate
+   ip address {{ m.peer_vlan_ip }}
+!
+interface Vlan4091
+   mtu 9214
+   ip address {{ m.ibgp_ip }}
+!
+{% endif -%}
+interface Vxlan1
+   vxlan source-interface Loopback1
+{% if m %}   vxlan virtual-router encapsulation mac-address mlag-system-id
+{% endif %}   vxlan udp-port {{ g.vxlan_port }}
+{% for v in (my_vlans + gw_vlans) | sort(attribute='id') %}   vxlan vlan {{ v.id }} vni {{ v.vni }}
+{% endfor %}{% for vrf, vd in g.vrfs | dictsort %}   vxlan vrf {{ vrf }} vni {{ vd.l3vni }}
+{% endfor -%}
+!
+{% if my_vlans -%}
+ip virtual-router mac-address {{ g.anycast_mac }}
+!
+{% endif -%}
+ip routing
+no ip routing vrf {{ g.mgmt.vrf }}
+{% for vrf in g.vrfs | sort %}ip routing vrf {{ vrf }}
+{% endfor -%}
+!
+{% for pl, entries in (d.prefix_lists | default({})) | dictsort -%}
+{% for e in entries %}ip prefix-list {{ pl }} seq {{ e.seq }} {{ e.action }} {{ e.prefix }}
+{% endfor -%}
+{% endfor -%}
+{% if gw -%}
+ip prefix-list DCI-UNDERLAY-OUT seq 10 permit {{ d.lo0 }}/32
+ip prefix-list DCI-UNDERLAY-OUT seq 20 permit {{ d.vtep }}/32
+{% endif -%}
+{% if d.prefix_lists is defined or gw %}!
+{% endif -%}
+{% if m -%}
+mlag configuration
+   domain-id {{ m.domain }}
+   local-interface Vlan4090
+   peer-address {{ m.peer_address }}
+   peer-link Port-Channel999
+!
+{% endif -%}
+{% for rm, entries in (d.route_maps | default({})) | dictsort -%}
+{% for e in entries -%}
+route-map {{ rm }} {{ e.action }} {{ e.seq }}
+   match ip address prefix-list {{ e.match_prefix_list }}
+!
+{% endfor -%}
+{% endfor -%}
+{% if gw -%}
+route-map DCI-UNDERLAY-OUT permit 10
+   match ip address prefix-list DCI-UNDERLAY-OUT
+!
+{% endif -%}
+router bfd
+   multihop interval {{ g.bfd.interval }} min-rx {{ g.bfd.min_rx }} multiplier {{ g.bfd.multiplier }}
+!
+{# ---------------- BGP ---------------- #}
+router bgp {{ d.asn }}
+   router-id {{ d.lo0 }}
+   no bgp default ipv4-unicast
+   distance bgp 20 200 200
+   maximum-paths 4 ecmp 64
+   neighbor evpn peer group
+{% if up_asn %}   neighbor evpn remote-as {{ up_asn }}
+{% endif %}   neighbor evpn update-source Loopback0
+   neighbor evpn bfd
+   neighbor evpn ebgp-multihop 3
+   neighbor evpn send-community extended
+   neighbor evpn maximum-routes {{ g.max_routes }} warning-only
+   neighbor underlay peer group
+{% if up_asn %}   neighbor underlay remote-as {{ up_asn }}
+{% endif %}   neighbor underlay maximum-routes {{ g.max_routes }} warning-only
+{% if m %}   neighbor underlay_ibgp peer group
+   neighbor underlay_ibgp remote-as {{ d.asn }}
+   neighbor underlay_ibgp next-hop-self
+   neighbor underlay_ibgp maximum-routes {{ g.max_routes }} warning-only
+{% endif -%}
+{% for u in uplinks %}   neighbor {{ u.peer_ip }} peer group underlay
+   neighbor {{ u.peer_ip }} description {{ u.peer }}-underlay
+{% endfor -%}
+{% for l in downlinks | sort(attribute='intf') %}   neighbor {{ l.peer_ip }} peer group underlay
+   neighbor {{ l.peer_ip }} remote-as {{ l.asn }}
+   neighbor {{ l.peer_ip }} description {{ l.name }}-underlay
+{% endfor -%}
+{% if m %}   neighbor {{ m.ibgp_peer }} peer group underlay_ibgp
+   neighbor {{ m.ibgp_peer }} description {{ m.peer }}-ibgp
+{% endif -%}
+{% for s in upstream %}   neighbor {{ s.lo0 }} peer group evpn
+   neighbor {{ s.lo0 }} description {{ s.name }}-EVPN-Lo0
+{% endfor -%}
+{% for l in downlinks | sort(attribute='intf') %}   neighbor {{ l.lo0 }} peer group evpn
+   neighbor {{ l.lo0 }} remote-as {{ l.asn }}
+   neighbor {{ l.lo0 }} description {{ l.name }}-EVPN-Lo0
+{% endfor -%}
+{% for l in (gw.links if gw else []) %}   neighbor {{ l.peer_ip }} remote-as {{ l.remote_as }}
+   neighbor {{ l.peer_ip }} route-map DCI-UNDERLAY-OUT out
+{% if l.neighbor_description is defined %}   neighbor {{ l.peer_ip }} description {{ l.neighbor_description }}
+{% endif %}{% endfor -%}
+{% for p in (gw.peers if gw else []) %}   neighbor {{ p.ip }} remote-as {{ p.remote_as }}
+   neighbor {{ p.ip }} update-source Loopback0
+   neighbor {{ p.ip }} ebgp-multihop 3
+   neighbor {{ p.ip }} send-community extended
+   neighbor {{ p.ip }} bfd
+   neighbor {{ p.ip }} description {{ p.description }}
+{% endfor -%}
+{% for v in (my_vlans + gw_vlans) | sort(attribute='id') %}   !
+   vlan {{ v.id }}
+      rd {{ d.lo0 }}:{{ v.id }}
+{% if v in gw_vlans %}      rd evpn domain remote {{ d.lo0 }}:{{ 10000 + v.id }}
+{% endif %}      route-target both {{ v.id }}:{{ v.vni }}
+{% if v in gw_vlans %}      route-target import export evpn domain remote {{ v.id }}:{{ v.vni }}
+{% endif %}      redistribute learned
+{% endfor %}   !
+   address-family evpn
+{% if gw %}      domain identifier {{ gw.domain_id }}
+      domain identifier {{ gw.remote_domain_id }} remote
+{% endif %}      neighbor evpn activate
+{% for p in (gw.peers if gw else []) %}      neighbor {{ p.ip }} activate
+      neighbor {{ p.ip }} domain remote
+{% endfor %}   !
+   address-family ipv4
+      neighbor underlay activate
+{% if m %}      neighbor underlay_ibgp activate
+{% endif %}{% for l in (gw.links if gw else []) %}      neighbor {{ l.peer_ip }} activate
+{% endfor %}      network {{ d.lo0 }}/32
+      network {{ d.vtep }}/32
+{% for vrf, vd in g.vrfs | dictsort -%}
+{% set peers = (d.vrf_neighbors | default({})).get(vrf, []) %}   !
+   vrf {{ vrf }}
+      rd {{ d.lo0 }}:1
+{% if gw %}      rd evpn domain remote {{ d.lo0 }}:10001
+{% endif %}{% if gw %}      route-target import evpn domain all {{ vd.rt }}
+      route-target export evpn domain all {{ vd.rt }}
+{% else %}      route-target import evpn {{ vd.rt }}
+      route-target export evpn {{ vd.rt }}
+{% endif %}{% for p in peers %}      neighbor {{ p.ip }} remote-as {{ p.remote_as }}
+{% if p.description is defined %}      neighbor {{ p.ip }} description {{ p.description }}
+{% endif %}{% if p.route_map_out is defined %}      neighbor {{ p.ip }} route-map {{ p.route_map_out }} out
+{% endif %}{% endfor -%}
+{% if d.role == 'leaf' or vrf in (d.vrf_loopbacks | default([])) | map(attribute='vrf') | list %}      redistribute connected
+{% endif -%}
+{% if peers %}      !
+      address-family ipv4
+{% for p in peers %}         neighbor {{ p.ip }} activate
+{% endfor %}{% endif -%}
+{% endfor -%}
+!
+{% include 'fabric/templates/_footer.j2' %}

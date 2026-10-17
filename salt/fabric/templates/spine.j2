@@ -1,0 +1,76 @@
+{#- ===================== SPINE =====================
+    IP router + EVPN route server. No VXLAN, no VLANs, no VRFs.
+    Downlinks and BGP neighbors are GENERATED from every leaf's uplink data,
+    so adding a leaf to the pillar automatically configures both spines.
+-#}
+{%- set name = pillar.hostname -%}
+{%- set f = pillar.fabric -%}
+{%- set g = f['global'] -%}
+{%- set d = f.devices[name] -%}
+{%- set ns = namespace(links=[]) -%}
+{%- for leaf, ld in f.devices | dictsort -%}
+{%- if ld.role != 'spine' -%}
+{%- for u in ld.uplinks | default([]) if u.peer == name -%}
+{%- set ns.links = ns.links + [{'leaf': leaf, 'asn': ld.asn, 'lo0': ld.lo0, 'intf': u.peer_intf, 'leaf_intf': u.intf, 'ip': u.peer_ip, 'leaf_ip': u.ip.split('/')[0]}] -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
+{% include 'fabric/templates/_header.j2' %}
+{% include 'fabric/templates/_mgmt.j2' %}
+{% for l in ns.links | sort(attribute='intf') -%}
+interface {{ l.intf }}
+   description {{ l.leaf }} {{ l.leaf_intf }}
+   mtu 9214
+   no switchport
+   ip address {{ l.ip }}/31
+!
+{% endfor -%}
+{% for x in d.extra_interfaces | default([]) -%}
+interface {{ x.name }}
+   no switchport
+   ip address {{ x.ip }}
+!
+{% endfor -%}
+interface Loopback0
+   description EVPN router-id
+   ip address {{ d.lo0 }}/32
+!
+ip routing
+no ip routing vrf {{ g.mgmt.vrf }}
+!
+router bfd
+   multihop interval {{ g.bfd.interval }} min-rx {{ g.bfd.min_rx }} multiplier {{ g.bfd.multiplier }}
+!
+router bgp {{ g.spine_asn }}
+   router-id {{ d.lo0 }}
+   no bgp default ipv4-unicast
+   distance bgp 20 200 200
+   maximum-paths 4 ecmp 64
+   neighbor evpn peer group
+   neighbor evpn next-hop-unchanged
+   neighbor evpn update-source Loopback0
+   neighbor evpn bfd
+   neighbor evpn ebgp-multihop 3
+   neighbor evpn send-community extended
+   neighbor evpn maximum-routes {{ g.max_routes }} warning-only
+   neighbor underlay peer group
+   neighbor underlay maximum-routes {{ g.max_routes }} warning-only
+{% for l in ns.links | sort(attribute='intf') %}
+   neighbor {{ l.leaf_ip }} peer group underlay
+   neighbor {{ l.leaf_ip }} remote-as {{ l.asn }}
+   neighbor {{ l.leaf_ip }} description {{ l.leaf }}-underlay
+{% endfor %}
+{% for l in ns.links | sort(attribute='intf') %}
+   neighbor {{ l.lo0 }} peer group evpn
+   neighbor {{ l.lo0 }} remote-as {{ l.asn }}
+   neighbor {{ l.lo0 }} description {{ l.leaf }}-EVPN-Lo0
+{% endfor %}
+   !
+   address-family evpn
+      neighbor evpn activate
+   !
+   address-family ipv4
+      neighbor underlay activate
+      network {{ d.lo0 }}/32
+!
+{% include 'fabric/templates/_footer.j2' %}

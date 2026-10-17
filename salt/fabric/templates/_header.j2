@@ -1,0 +1,29 @@
+{#- Common top of every config. Expects: name, g, d (set by the role template) -#}
+no aaa root
+!
+{% for u, x in g.users | dictsort -%}
+username {{ u }}{% if x.privilege is defined %} privilege {{ x.privilege }}{% endif %} role {{ x.role }} secret sha512 {{ x.hash }}
+{% endfor -%}
+!
+{% if d.eos_train | default('4.31') == '4.31' -%}
+transceiver qsfp default-mode 4x10G
+{% else -%}
+no service interface inactive port-id allocation disabled
+{% endif -%}
+!
+service routing protocols model multi-agent
+!
+hostname {{ name }}
+{% for s in g.mgmt.dns -%}
+ip name-server vrf {{ g.mgmt.vrf }} {{ s }}
+{% endfor -%}
+!
+spanning-tree mode mstp
+{% if d.mlag is defined -%}
+no spanning-tree vlan-id 4090-4091
+{% endif -%}
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!

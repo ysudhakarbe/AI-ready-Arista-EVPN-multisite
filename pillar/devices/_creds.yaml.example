@@ -1,0 +1,4 @@
+# Copy to pillar/devices/_creds.yaml on the Salt master (git-ignored).
+# eAPI / SSH account the NAPALM proxies log in with.
+username: salt
+passwd: CHANGE-ME

@@ -1,0 +1,13 @@
+# Copy to pillar/users.sls on the Salt master. pillar/users.sls is git-ignored.
+# Generate a hash on any Linux box:   openssl passwd -6 'YourPassword'
+# (or on EOS: configure the user once and copy the sha512 from show running-config)
+fabric:
+  global:
+    users:
+      monitor:
+        role: network-operator
+        hash: "$6$REPLACE$WITH-A-REAL-SHA512-HASH"
+      salt:
+        role: network-admin
+        privilege: 15
+        hash: "$6$REPLACE$WITH-A-REAL-SHA512-HASH"
