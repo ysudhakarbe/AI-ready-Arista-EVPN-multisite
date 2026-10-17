@@ -1,0 +1,327 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2240" height="1250" viewBox="0 0 2240 1250">
+<rect width="2240" height="1250" fill="#ffffff"/>
+<rect width="2240" height="72" fill="#0f172a"/>
+<text x="30.0" y="34.0" font-family="DejaVu Sans" font-size="26" fill="#fff" font-weight="bold" font-style="normal" text-anchor="start">Arista EVPN-VXLAN · 3 data centers · managed by SaltStack</text>
+<text x="30.0" y="58.0" font-family="DejaVu Sans" font-size="13.5" fill="#cbd5e1" font-weight="normal" font-style="normal" text-anchor="start">11 Arista vEOS switches + IOSv edge · eBGP underlay /31 · eBGP EVPN on Lo0 · VTEP on Lo1 · symmetric IRB, VRF gold (L3VNI 100001) · anycast GW MAC 00:1c:73:00:00:99</text>
+<rect x="30.0" y="92.0" width="1400.0" height="800.0" rx="14" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="8,5"/>
+<text x="44.0" y="114.0" font-family="DejaVu Sans" font-size="14" fill="#1d4ed8" font-weight="bold" font-style="normal" text-anchor="start">DC1 · Primary fabric · EVPN domain 1:1 · eBGP underlay /31 · spines = EVPN route servers</text>
+<rect x="1650.0" y="92.0" width="560.0" height="150.0" rx="14" fill="#f1f5f9" stroke="#475569" stroke-width="2" stroke-dasharray="8,5"/>
+<text x="1664.0" y="114.0" font-family="DejaVu Sans" font-size="14" fill="#475569" font-weight="bold" font-style="normal" text-anchor="start">Automation &amp; out-of-band management</text>
+<rect x="1650.0" y="268.0" width="560.0" height="300.0" rx="14" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="8,5"/>
+<text x="1664.0" y="290.0" font-family="DejaVu Sans" font-size="14" fill="#c2410c" font-weight="bold" font-style="normal" text-anchor="start">DC2 · DR site · L3 only (VRF-lite)</text>
+<rect x="1650.0" y="598.0" width="560.0" height="294.0" rx="14" fill="#ecfdf5" stroke="#047857" stroke-width="2" stroke-dasharray="8,5"/>
+<text x="1664.0" y="620.0" font-family="DejaVu Sans" font-size="14" fill="#047857" font-weight="bold" font-style="normal" text-anchor="start">DC3 · Metro twin · EVPN domain 3:3</text>
+<line x1="479.6" y1="222.0" x2="195.8" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="503.9" y1="222.0" x2="390.3" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="528.1" y1="222.0" x2="584.8" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="552.3" y1="222.0" x2="779.4" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="576.5" y1="222.0" x2="973.9" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="601.7" y1="222.0" x2="1180.0" y2="441.5" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="872.3" y1="222.0" x2="251.0" y2="441.5" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="896.5" y1="222.0" x2="449.9" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="920.7" y1="222.0" x2="644.4" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="944.9" y1="222.0" x2="839.0" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="969.1" y1="222.0" x2="1033.5" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="995.6" y1="222.0" x2="1246.0" y2="440.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M208.60000000000002 518 v26 H306.4 v-26" fill="none" stroke="#0e7490" stroke-width="4"/>
+<line x1="918.8" y1="712.0" x2="836.5" y2="518.0" stroke="#b45309" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="945.3" y1="712.0" x2="1028.3" y2="518.0" stroke="#b45309" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="145.0" y1="712.0" x2="145.0" y2="518.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="370.0" y1="712.0" x2="370.0" y2="518.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="546.5" y1="712.0" x2="586.9" y2="518.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="687.7" y1="712.0" x2="610.5" y2="518.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="2100.0" y1="470.0" x2="2100.0" y2="408.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="2006.8" y1="790.0" x2="2060.0" y2="738.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="2126.1" y1="790.0" x2="2111.2" y2="738.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="1300.0" y1="146.0" x2="1300.0" y2="196.0" stroke="#b91c1c" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1300.0" y1="258.0" x2="1300.0" y2="440.0" stroke="#b91c1c" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1905.0" y1="374.0" x2="1990.0" y2="371.8" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/>
+<line x1="1905.0" y1="704.0" x2="1990.0" y2="701.8" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+<line x1="1420.0" y1="459.8" x2="1665.0" y2="404.2" stroke="#c2410c" stroke-width="3" stroke-linecap="round" stroke-dasharray="10,6"/>
+<line x1="1403.6" y1="534.0" x2="1681.4" y2="660.0" stroke="#047857" stroke-width="6" stroke-linecap="round"/>
+<rect x="398.0" y="163.0" width="250.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="395.0" y="160.0" width="250.0" height="62.0" rx="9" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M404.0 160 h232 a9 9 0 0 1 9 9 v15 h-250 v-15 a9 9 0 0 1 9 -9 z" fill="#0f172a"/>
+<rect x="403.0" y="165.0" width="22.0" height="14.0" rx="3" fill="#0f172a" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M408.0 169 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M420.0 175 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="433.0" y="177.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">spine1</text>
+<text x="404.0" y="200.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65000 · Lo0 10.0.250.1</text>
+<text x="404.0" y="216.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E1-E6 → leaves (.0 of each /31)</text>
+<rect x="838.0" y="163.0" width="250.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="835.0" y="160.0" width="250.0" height="62.0" rx="9" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M844.0 160 h232 a9 9 0 0 1 9 9 v15 h-250 v-15 a9 9 0 0 1 9 -9 z" fill="#0f172a"/>
+<rect x="843.0" y="165.0" width="22.0" height="14.0" rx="3" fill="#0f172a" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M848.0 169 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M860.0 175 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="873.0" y="177.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">spine2</text>
+<text x="844.0" y="200.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65000 · Lo0 10.0.250.2</text>
+<text x="844.0" y="216.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E1-E6 → leaves (.0 of each /31)</text>
+<rect x="42.0" y="443.0" width="212.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="39.0" y="440.0" width="212.0" height="78.0" rx="9" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<path d="M48.0 440 h194 a9 9 0 0 1 9 9 v15 h-212 v-15 a9 9 0 0 1 9 -9 z" fill="#1d4ed8"/>
+<rect x="47.0" y="445.0" width="22.0" height="14.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M52.0 449 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M64.0 455 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="77.0" y="457.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">leaf1</text>
+<text x="48.0" y="480.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65001 · Lo0 10.0.250.11</text>
+<text x="48.0" y="496.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.0.255.11 (shared)</text>
+<text x="48.0" y="512.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E11 10.0.1.1 · E12 10.0.2.1</text>
+<rect x="267.0" y="443.0" width="212.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="264.0" y="440.0" width="212.0" height="78.0" rx="9" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<path d="M273.0 440 h194 a9 9 0 0 1 9 9 v15 h-212 v-15 a9 9 0 0 1 9 -9 z" fill="#1d4ed8"/>
+<rect x="272.0" y="445.0" width="22.0" height="14.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M277.0 449 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M289.0 455 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="302.0" y="457.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">leaf2</text>
+<text x="273.0" y="480.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65001 · Lo0 10.0.250.12</text>
+<text x="273.0" y="496.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.0.255.11 (shared)</text>
+<text x="273.0" y="512.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E11 10.0.1.3 · E12 10.0.2.3</text>
+<rect x="492.0" y="443.0" width="212.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="489.0" y="440.0" width="212.0" height="78.0" rx="9" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<path d="M498.0 440 h194 a9 9 0 0 1 9 9 v15 h-212 v-15 a9 9 0 0 1 9 -9 z" fill="#1d4ed8"/>
+<rect x="497.0" y="445.0" width="22.0" height="14.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M502.0 449 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M514.0 455 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="527.0" y="457.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">leaf3</text>
+<text x="498.0" y="480.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65002 · Lo0 10.0.250.13</text>
+<text x="498.0" y="496.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.0.255.13</text>
+<text x="498.0" y="512.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E11 10.0.1.5 · E12 10.0.2.5</text>
+<rect x="717.0" y="443.0" width="212.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="714.0" y="440.0" width="212.0" height="78.0" rx="9" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<path d="M723.0 440 h194 a9 9 0 0 1 9 9 v15 h-212 v-15 a9 9 0 0 1 9 -9 z" fill="#1d4ed8"/>
+<rect x="722.0" y="445.0" width="22.0" height="14.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M727.0 449 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M739.0 455 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="752.0" y="457.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">leaf4</text>
+<text x="723.0" y="480.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65004 · Lo0 10.0.250.17</text>
+<text x="723.0" y="496.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.0.255.17</text>
+<text x="723.0" y="512.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E11 10.0.1.13 · E12 10.0.2.13</text>
+<rect x="942.0" y="443.0" width="212.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="939.0" y="440.0" width="212.0" height="78.0" rx="9" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+<path d="M948.0 440 h194 a9 9 0 0 1 9 9 v15 h-212 v-15 a9 9 0 0 1 9 -9 z" fill="#1d4ed8"/>
+<rect x="947.0" y="445.0" width="22.0" height="14.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M952.0 449 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M964.0 455 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="977.0" y="457.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">leaf5</text>
+<text x="948.0" y="480.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65005 · Lo0 10.0.250.18</text>
+<text x="948.0" y="496.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.0.255.18</text>
+<text x="948.0" y="512.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E11 10.0.1.15 · E12 10.0.2.15</text>
+<rect x="1183.0" y="443.0" width="240.0" height="94.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1180.0" y="440.0" width="240.0" height="94.0" rx="9" fill="#ffffff" stroke="#6d28d9" stroke-width="2"/>
+<path d="M1189.0 440 h222 a9 9 0 0 1 9 9 v15 h-240 v-15 a9 9 0 0 1 9 -9 z" fill="#6d28d9"/>
+<rect x="1188.0" y="445.0" width="22.0" height="14.0" rx="3" fill="#6d28d9" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M1193.0 449 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M1205.0 455 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="1218.0" y="457.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">dc1-border-leaf</text>
+<text x="1189.0" y="480.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65003 · Lo0 10.0.250.15</text>
+<text x="1189.0" y="496.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.0.255.15 · EOS 4.36</text>
+<text x="1189.0" y="512.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">E1 10.0.1.9 · E2 10.0.2.9</text>
+<text x="1189.0" y="528.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">EVPN gateway · domain 1:1</text>
+<rect x="1173.0" y="199.0" width="260.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1170.0" y="196.0" width="260.0" height="62.0" rx="9" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+<path d="M1179.0 196 h242 a9 9 0 0 1 9 9 v15 h-260 v-15 a9 9 0 0 1 9 -9 z" fill="#b91c1c"/>
+<ellipse cx="1189.0" cy="208" rx="11" ry="7" fill="#b91c1c" stroke="#fff" stroke-width="1.2"/>
+<path d="M1182.0 208 h14 M1189.0 203 v10" stroke="#fff" stroke-width="1.3"/>
+<text x="1208.0" y="213.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">internet-rtr (IOSv)</text>
+<text x="1179.0" y="236.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65100 · NAT · default-originate</text>
+<text x="1179.0" y="252.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Gi0/0 172.16.100.1/31</text>
+<rect x="1668.0" y="333.0" width="240.0" height="94.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1665.0" y="330.0" width="240.0" height="94.0" rx="9" fill="#ffffff" stroke="#c2410c" stroke-width="2"/>
+<path d="M1674.0 330 h222 a9 9 0 0 1 9 9 v15 h-240 v-15 a9 9 0 0 1 9 -9 z" fill="#c2410c"/>
+<rect x="1673.0" y="335.0" width="22.0" height="14.0" rx="3" fill="#c2410c" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M1678.0 339 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M1690.0 345 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="1703.0" y="347.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">dc2-border-leaf</text>
+<text x="1674.0" y="370.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65200 · Lo0 10.1.250.15</text>
+<text x="1674.0" y="386.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.1.255.15</text>
+<text x="1674.0" y="402.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Eth4.100 172.16.200.1 (gold)</text>
+<text x="1674.0" y="418.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Eth1 10.1.1.0/31</text>
+<rect x="1993.0" y="333.0" width="220.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1990.0" y="330.0" width="220.0" height="78.0" rx="9" fill="#ffffff" stroke="#c2410c" stroke-width="2"/>
+<path d="M1999.0 330 h202 a9 9 0 0 1 9 9 v15 h-220 v-15 a9 9 0 0 1 9 -9 z" fill="#c2410c"/>
+<rect x="1998.0" y="335.0" width="22.0" height="14.0" rx="3" fill="#c2410c" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M2003.0 339 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M2015.0 345 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="2028.0" y="347.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">dc2-leaf1</text>
+<text x="1999.0" y="370.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65201 · Lo0 10.1.250.11</text>
+<text x="1999.0" y="386.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.1.255.11</text>
+<text x="1999.0" y="402.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Eth11 10.1.1.1/31</text>
+<rect x="1668.0" y="663.0" width="240.0" height="94.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1665.0" y="660.0" width="240.0" height="94.0" rx="9" fill="#ffffff" stroke="#047857" stroke-width="2"/>
+<path d="M1674.0 660 h222 a9 9 0 0 1 9 9 v15 h-240 v-15 a9 9 0 0 1 9 -9 z" fill="#047857"/>
+<rect x="1673.0" y="665.0" width="22.0" height="14.0" rx="3" fill="#047857" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M1678.0 669 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M1690.0 675 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="1703.0" y="677.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">dc3-border-leaf</text>
+<text x="1674.0" y="700.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65300 · Lo0 10.3.250.15</text>
+<text x="1674.0" y="716.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.3.255.15 · EOS 4.36</text>
+<text x="1674.0" y="732.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Eth5 172.16.230.1 · Eth1 10.3.1.0</text>
+<text x="1674.0" y="748.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Lo100 10.3.100.1 (gold) · dom 3:3</text>
+<rect x="1993.0" y="663.0" width="220.0" height="78.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1990.0" y="660.0" width="220.0" height="78.0" rx="9" fill="#ffffff" stroke="#047857" stroke-width="2"/>
+<path d="M1999.0 660 h202 a9 9 0 0 1 9 9 v15 h-220 v-15 a9 9 0 0 1 9 -9 z" fill="#047857"/>
+<rect x="1998.0" y="665.0" width="22.0" height="14.0" rx="3" fill="#047857" stroke="#ffffff" stroke-width="1.2"/>
+<path d="M2003.0 669 h12 m-3 -2.5 l3 2.5 l-3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<path d="M2015.0 675 h-12 m3 -2.5 l-3 2.5 l3 2.5" stroke="#fff" stroke-width="1.3" fill="none"/>
+<text x="2028.0" y="677.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">dc3-leaf1</text>
+<text x="1999.0" y="700.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">AS 65301 · Lo0 10.3.250.11</text>
+<text x="1999.0" y="716.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VTEP 10.3.255.11</text>
+<text x="1999.0" y="732.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Eth11 10.3.1.1/31</text>
+<rect x="1773.0" y="131.0" width="320.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1770.0" y="128.0" width="320.0" height="62.0" rx="9" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<path d="M1779.0 128 h302 a9 9 0 0 1 9 9 v15 h-320 v-15 a9 9 0 0 1 9 -9 z" fill="#475569"/>
+<rect x="1782.0" y="132.0" width="14.0" height="16.0" rx="2" fill="#475569" stroke="#fff" stroke-width="1.2"/>
+<path d="M1785.0 137 h8 M1785.0 141 h8" stroke="#fff" stroke-width="1.2"/>
+<text x="1808.0" y="145.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">Salt master</text>
+<text x="1779.0" y="168.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">NAPALM proxy minions (eAPI/HTTPS)</text>
+<text x="1779.0" y="184.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">pillar + Jinja → full-config replace</text>
+<rect x="73.0" y="715.0" width="150.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="70.0" y="712.0" width="150.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M79.0 712 h132 a9 9 0 0 1 9 9 v15 h-150 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="80.0" y="717.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M85.0 731 h8" stroke="#64748b" stroke-width="2"/>
+<text x="108.0" y="729.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC1</text>
+<text x="79.0" y="752.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.40.40.10/24</text>
+<text x="79.0" y="768.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 40 · leaf1 Eth1</text>
+<rect x="298.0" y="715.0" width="150.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="295.0" y="712.0" width="150.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M304.0 712 h132 a9 9 0 0 1 9 9 v15 h-150 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="305.0" y="717.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M310.0 731 h8" stroke="#64748b" stroke-width="2"/>
+<text x="333.0" y="729.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC2</text>
+<text x="304.0" y="752.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.40.40.30/24</text>
+<text x="304.0" y="768.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 40 · leaf2 Eth1</text>
+<rect x="468.0" y="715.0" width="150.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="465.0" y="712.0" width="150.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M474.0 712 h132 a9 9 0 0 1 9 9 v15 h-150 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="475.0" y="717.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M480.0 731 h8" stroke="#64748b" stroke-width="2"/>
+<text x="503.0" y="729.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC3</text>
+<text x="474.0" y="752.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.40.40.20/24</text>
+<text x="474.0" y="768.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 40 · leaf3 Eth1</text>
+<rect x="628.0" y="715.0" width="150.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="625.0" y="712.0" width="150.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M634.0 712 h132 a9 9 0 0 1 9 9 v15 h-150 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="635.0" y="717.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M640.0 731 h8" stroke="#64748b" stroke-width="2"/>
+<text x="663.0" y="729.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC4</text>
+<text x="634.0" y="752.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.50.50.10/24</text>
+<text x="634.0" y="768.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 50 · leaf3 Eth2</text>
+<rect x="850.0" y="715.0" width="170.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="847.0" y="712.0" width="170.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M856.0 712 h152 a9 9 0 0 1 9 9 v15 h-170 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="857.0" y="717.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M862.0 731 h8" stroke="#64748b" stroke-width="2"/>
+<text x="885.0" y="729.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">SRV-1 (bond0)</text>
+<text x="856.0" y="752.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.40.40.70/24</text>
+<text x="856.0" y="768.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 40 · Po10 ESI-LAG</text>
+<rect x="2008.0" y="473.0" width="190.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="2005.0" y="470.0" width="190.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M2014.0 470 h172 a9 9 0 0 1 9 9 v15 h-190 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="2015.0" y="475.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M2020.0 489 h8" stroke="#64748b" stroke-width="2"/>
+<text x="2043.0" y="487.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC5</text>
+<text x="2014.0" y="510.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.60.60.10/24</text>
+<text x="2014.0" y="526.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 60 · dc2-leaf1 Eth1</text>
+<rect x="1898.0" y="793.0" width="160.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="1895.0" y="790.0" width="160.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M1904.0 790 h142 a9 9 0 0 1 9 9 v15 h-160 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="1905.0" y="795.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M1910.0 809 h8" stroke="#64748b" stroke-width="2"/>
+<text x="1933.0" y="807.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC6</text>
+<text x="1904.0" y="830.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.40.40.60/24</text>
+<text x="1904.0" y="846.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 40 · stretched</text>
+<rect x="2068.0" y="793.0" width="140.0" height="62.0" rx="9" fill="#0f172a22" stroke="none" stroke-width="0"/>
+<rect x="2065.0" y="790.0" width="140.0" height="62.0" rx="9" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<path d="M2074.0 790 h122 a9 9 0 0 1 9 9 v15 h-140 v-15 a9 9 0 0 1 9 -9 z" fill="#64748b"/>
+<rect x="2075.0" y="795.0" width="18.0" height="11.0" rx="2" fill="#64748b" stroke="#fff" stroke-width="1.2"/>
+<path d="M2080.0 809 h8" stroke="#64748b" stroke-width="2"/>
+<text x="2103.0" y="807.0" font-family="DejaVu Sans" font-size="13.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="start">VPC7</text>
+<text x="2074.0" y="830.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">10.70.70.10/24</text>
+<text x="2074.0" y="846.0" font-family="DejaVu Sans Mono" font-size="11.3" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VLAN 70 · DC3 only</text>
+<path d="M1250 146 a20 20 0 0 1 0-36 a26 26 0 0 1 48-12 a22 22 0 0 1 42 6 a18 18 0 0 1 10 42 z" fill="#fff1f2" stroke="#b91c1c" stroke-width="1.8"/>
+<text x="1292.0" y="132.0" font-family="DejaVu Sans" font-size="14" fill="#b91c1c" font-weight="bold" font-style="normal" text-anchor="middle">Internet</text>
+<rect x="103.0" y="534.0" width="309.0" height="20.0" rx="5" fill="#ffffff" stroke="#0e7490" stroke-width="1"/>
+<text x="257.5" y="549.0" font-family="DejaVu Sans" font-size="11" fill="#0e7490" font-weight="bold" font-style="normal" text-anchor="middle">MLAG peer-link Eth10 · V4091 iBGP 10.0.3.0/31</text>
+<rect x="1169.8" y="334.5" width="260.4" height="20.5" rx="5" fill="#ffffff" stroke="#b91c1c" stroke-width="1"/>
+<text x="1300.0" y="350.0" font-family="DejaVu Sans" font-size="11.5" fill="#b91c1c" font-weight="bold" font-style="normal" text-anchor="middle">VRF gold eBGP · Eth3 172.16.100.0/31</text>
+<rect x="1906.8" y="363.4" width="81.3" height="19.5" rx="5" fill="#ffffff" stroke="#c2410c" stroke-width="1"/>
+<text x="1947.5" y="377.9" font-family="DejaVu Sans" font-size="10.5" fill="#c2410c" font-weight="bold" font-style="normal" text-anchor="middle">10.1.1.0/31</text>
+<rect x="1906.8" y="693.4" width="81.3" height="19.5" rx="5" fill="#ffffff" stroke="#047857" stroke-width="1"/>
+<text x="1947.5" y="707.9" font-family="DejaVu Sans" font-size="10.5" fill="#047857" font-weight="bold" font-style="normal" text-anchor="middle">10.3.1.0/31</text>
+<rect x="800.6" y="644.0" width="262.8" height="20.0" rx="5" fill="#ffffff" stroke="#b45309" stroke-width="1"/>
+<text x="932.0" y="659.0" font-family="DejaVu Sans" font-size="11" fill="#b45309" font-weight="bold" font-style="normal" text-anchor="middle">ESI-LAG · ESI 0000:0000:0000:0000:0010</text>
+<rect x="1433.0" y="250.0" width="214.0" height="84.0" rx="8" fill="#ffffff" stroke="#c2410c" stroke-width="2"/>
+<text x="1540.0" y="270.0" font-family="DejaVu Sans" font-size="13" fill="#c2410c" font-weight="bold" font-style="normal" text-anchor="middle">VRF-lite · DC1 ↔ DC2</text>
+<text x="1540.0" y="288.0" font-family="DejaVu Sans" font-size="12" fill="#c2410c" font-weight="normal" font-style="normal" text-anchor="middle">DWDM · eBGP IPv4 (gold)</text>
+<text x="1540.0" y="306.0" font-family="DejaVu Sans" font-size="12" fill="#c2410c" font-weight="normal" font-style="normal" text-anchor="middle">Eth4.100 · 172.16.200.0/31</text>
+<text x="1540.0" y="324.0" font-family="DejaVu Sans" font-size="12" fill="#c2410c" font-weight="normal" font-style="normal" text-anchor="middle">AS 65003 ↔ 65200</text>
+<rect x="1433.0" y="560.0" width="214.0" height="84.0" rx="8" fill="#ffffff" stroke="#047857" stroke-width="2"/>
+<text x="1540.0" y="580.0" font-family="DejaVu Sans" font-size="13" fill="#047857" font-weight="bold" font-style="normal" text-anchor="middle">EVPN GW · DC1 ↔ DC3</text>
+<text x="1540.0" y="598.0" font-family="DejaVu Sans" font-size="12" fill="#047857" font-weight="normal" font-style="normal" text-anchor="middle">Metro DWDM · RFC 9014</text>
+<text x="1540.0" y="616.0" font-family="DejaVu Sans" font-size="12" fill="#047857" font-weight="normal" font-style="normal" text-anchor="middle">L2 VLAN 40 + L3 Type-5</text>
+<text x="1540.0" y="634.0" font-family="DejaVu Sans" font-size="12" fill="#047857" font-weight="normal" font-style="normal" text-anchor="middle">Eth5 · 172.16.230.0/31</text>
+<text x="1930.0" y="222.0" font-family="DejaVu Sans" font-size="12" fill="#475569" font-weight="normal" font-style="italic" text-anchor="middle">OOB VRF MGMT 192.168.1.0/24 to every device</text>
+<rect x="30.0" y="915.0" width="600.0" height="310.0" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="1.8"/>
+<path d="M42 915 h576 a12 12 0 0 1 12 12 v18 h-600 v-18 a12 12 0 0 1 12 -12 z" fill="#0f172a"/>
+<text x="44.0" y="936.0" font-family="DejaVu Sans" font-size="14" fill="#fff" font-weight="bold" font-style="normal" text-anchor="start">Legend</text>
+<line x1="50.0" y1="971.0" x2="120.0" y2="971.0" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+<text x="134.0" y="975.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Underlay eBGP /31 (spine ↔ leaf), EVPN over Lo0</text>
+<line x1="50.0" y1="1003.0" x2="120.0" y2="1003.0" stroke="#0e7490" stroke-width="4" stroke-linecap="round"/>
+<text x="134.0" y="1007.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">MLAG peer-link + iBGP (leaf1/leaf2, shared VTEP)</text>
+<line x1="50.0" y1="1035.0" x2="120.0" y2="1035.0" stroke="#b45309" stroke-width="2.4" stroke-linecap="round"/>
+<text x="134.0" y="1039.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">EVPN ESI-LAG all-active (Type-1 / Type-4)</text>
+<line x1="50.0" y1="1067.0" x2="120.0" y2="1067.0" stroke="#047857" stroke-width="6" stroke-linecap="round"/>
+<text x="134.0" y="1071.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Metro DCI · EVPN gateway (L2 + L3)</text>
+<line x1="50.0" y1="1099.0" x2="120.0" y2="1099.0" stroke="#c2410c" stroke-width="3" stroke-linecap="round" stroke-dasharray="10,6"/>
+<text x="134.0" y="1103.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">DCI · VRF-lite (L3 only)</text>
+<line x1="50.0" y1="1131.0" x2="120.0" y2="1131.0" stroke="#b91c1c" stroke-width="2.2" stroke-linecap="round"/>
+<text x="134.0" y="1135.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Internet edge · VRF gold default route</text>
+<line x1="50.0" y1="1163.0" x2="120.0" y2="1163.0" stroke="#64748b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="134.0" y="1167.0" font-family="DejaVu Sans" font-size="12.5" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">Host access port</text>
+<rect x="650.0" y="915.0" width="760.0" height="310.0" rx="12" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.8"/>
+<path d="M662 915 h736 a12 12 0 0 1 12 12 v18 h-760 v-18 a12 12 0 0 1 12 -12 z" fill="#1d4ed8"/>
+<text x="664.0" y="936.0" font-family="DejaVu Sans" font-size="14" fill="#fff" font-weight="bold" font-style="normal" text-anchor="start">Overlay &amp; services</text>
+<text x="664.0" y="967.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">VRF gold</text>
+<text x="780.0" y="967.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">L3VNI 100001 · RT 1:100001 · symmetric IRB</text>
+<text x="664.0" y="988.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">VLAN 40</text>
+<text x="780.0" y="988.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VNI 110040 · GW 10.40.40.1 · DC1 + DC3 (stretched)</text>
+<text x="664.0" y="1009.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">VLAN 50</text>
+<text x="780.0" y="1009.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VNI 110050 · GW 10.50.50.1 · DC1 leaf3/4/5</text>
+<text x="664.0" y="1030.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">VLAN 60</text>
+<text x="780.0" y="1030.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VNI 110060 · GW 10.60.60.1 · DC2</text>
+<text x="664.0" y="1051.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">VLAN 70</text>
+<text x="780.0" y="1051.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">VNI 110070 · GW 10.70.70.1 · DC3</text>
+<text x="664.0" y="1072.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">RD / RT</text>
+<text x="780.0" y="1072.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">MAC-VRF Lo0:VLAN, RT VLAN:VNI · IP-VRF Lo0:1</text>
+<text x="664.0" y="1093.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">Gateway RD</text>
+<text x="780.0" y="1093.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">remote domain Lo0:(10000+VLAN) · VRF Lo0:10001</text>
+<text x="664.0" y="1114.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">BFD</text>
+<text x="780.0" y="1114.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">multihop 1000 ms × 3 on all EVPN sessions</text>
+<text x="664.0" y="1135.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">DC2 ↔ DC3</text>
+<text x="780.0" y="1135.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">transit via DC1 (VRF-lite ↔ Type-5 at the hub)</text>
+<text x="664.0" y="1156.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">Internet</text>
+<text x="780.0" y="1156.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">default from internet-rtr, NAT 10.0.0.0/8</text>
+<rect x="1430.0" y="915.0" width="780.0" height="310.0" rx="12" fill="#ffffff" stroke="#475569" stroke-width="1.8"/>
+<path d="M1442 915 h756 a12 12 0 0 1 12 12 v18 h-780 v-18 a12 12 0 0 1 12 -12 z" fill="#475569"/>
+<text x="1444.0" y="936.0" font-family="DejaVu Sans" font-size="14" fill="#fff" font-weight="bold" font-style="normal" text-anchor="start">Management (OOB, VRF MGMT) &amp; automation</text>
+<text x="1444.0" y="967.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">spine1 / spine2</text>
+<text x="1670.0" y="967.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">192.168.1.211 / .212</text>
+<text x="1444.0" y="988.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">leaf1 – leaf5</text>
+<text x="1670.0" y="988.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">192.168.1.221 – .225</text>
+<text x="1444.0" y="1009.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">dc1-border-leaf</text>
+<text x="1670.0" y="1009.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">192.168.1.226</text>
+<text x="1444.0" y="1030.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">dc3-border-leaf / leaf1</text>
+<text x="1670.0" y="1030.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">192.168.1.228 / .229</text>
+<text x="1444.0" y="1051.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">dc2-border-leaf / leaf1</text>
+<text x="1670.0" y="1051.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">192.168.1.233 / .231</text>
+<text x="1444.0" y="1072.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">internet-rtr</text>
+<text x="1670.0" y="1072.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">192.168.1.232</text>
+<text x="1444.0" y="1093.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">Salt</text>
+<text x="1670.0" y="1093.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">3007 · NAPALM eos (eAPI) · netconfig.managed replace</text>
+<text x="1444.0" y="1114.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">Workflow</text>
+<text x="1670.0" y="1114.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">pillar → render.py diff → test=True → apply</text>
+<text x="1444.0" y="1135.0" font-family="DejaVu Sans" font-size="12" fill="#0f172a" font-weight="bold" font-style="normal" text-anchor="start">State</text>
+<text x="1670.0" y="1135.0" font-family="DejaVu Sans Mono" font-size="12" fill="#0f172a" font-weight="normal" font-style="normal" text-anchor="start">11/11 switches Salt-managed · zero drift</text>
+</svg>
