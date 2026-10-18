@@ -3,7 +3,7 @@
 ![Arista EOS](https://img.shields.io/badge/Arista-EOS%204.31%20%7C%204.36-1d4ed8)
 ![EVPN-VXLAN](https://img.shields.io/badge/EVPN--VXLAN-RFC%209014%20multi--site-047857)
 ![SaltStack](https://img.shields.io/badge/SaltStack-3007%20%2B%20NAPALM-0f172a)
-![Drift](https://img.shields.io/badge/config%20drift-0%20%2F%2011%20switches-16a34a)
+![Drift](https://img.shields.io/badge/config%20drift-0%20%2F%2012%20switches-16a34a)
 ![License](https://img.shields.io/badge/license-MIT-64748b)
 
 A three-data-center Arista EVPN-VXLAN network, built in EVE-NG and run entirely as code with **SaltStack + NAPALM**.
@@ -13,11 +13,11 @@ The design is the **front-end, storage and DCI fabric of an AI data center**, an
 
 | | |
 |---|---|
-| **Scale** | 3 data centers · 11 Arista vEOS switches · Cisco IOSv internet edge |
+| **Scale** | 3 data centers · 12 Arista vEOS switches · Cisco IOSv internet edge |
 | **Overlay** | BGP EVPN, VXLAN, symmetric IRB, anycast gateway, MLAG, EVPN ESI multihoming |
 | **Multi-site** | DC1 ↔ DC3: RFC 9014 multi-domain EVPN gateway (L2 stretch + Type-5) · DC1 ↔ DC2: VRF-lite DR site |
 | **Automation** | Salt 3007 · NAPALM proxy minions over eAPI · `netconfig.managed` replace · offline render + semantic diff |
-| **Outcome** | All 11 switches managed as code, **zero drift**, two hand-built DCs onboarded **without an outage** |
+| **Outcome** | All 12 switches managed as code, **zero drift**, two hand-built DCs onboarded **without an outage** |
 
 ---
 
@@ -31,7 +31,7 @@ The design is the **front-end, storage and DCI fabric of an AI data center**, an
 
 ```mermaid
 flowchart TB
-  SALT[["Salt master · NAPALM proxies<br/>manages all 11 switches over OOB mgmt (eAPI)"]]
+  SALT[["Salt master · NAPALM proxies<br/>manages all 12 switches over OOB mgmt (eAPI)"]]
   INET(("Internet")) --- RTR["internet-rtr<br/>IOSv · AS 65100 · NAT"]
 
   subgraph DC1["DC1 · primary fabric · EVPN domain 1:1"]
@@ -206,7 +206,7 @@ sudo salt -N switches state.apply fabric test=True     # 7. whole-lab drift chec
 - [x] Salt master, NAPALM proxy minions, repo with pillar as source of truth
 - [x] DC1 (8 switches) templated, drift removed, zero-drift baseline
 - [x] DC3 metro twin with RFC 9014 EVPN gateways (EOS 4.36), VLAN 40 stretch, Type-5 between DCs, DC2 transit
-- [x] DC2 + DC3 onboarded into Salt: hub/gateway roles, 4.36 handling, leaf-first rollout, **11/11 zero drift**
+- [x] DC2 + DC3 onboarded into Salt: hub/gateway roles, 4.36 handling, leaf-first rollout, **12/12 zero drift**
 - [ ] Day-2: scheduled backups + drift report committed to git
 - [ ] internet-rtr (IOSv) via NAPALM `ios`
 - [ ] Streaming telemetry: gNMI → gnmic → Prometheus → Grafana, Salt deploys annotated

@@ -80,10 +80,10 @@ flowchart TB
     PIL["pillar: fabric.sls + users.sls + devices/*.sls"]
     TPL["templates: spine.j2 · leaf.j2"]
     ST["state fabric → netconfig.managed (replace)"]
-    PX["salt-proxy@&lt;switch&gt; × 11<br/>(systemd, NAPALM eos driver)"]
+    PX["salt-proxy@&lt;switch&gt; × 12<br/>(systemd, NAPALM eos driver)"]
   end
   PIL --> TPL --> ST --> PX
-  PX -->|"eAPI/HTTPS · VRF MGMT<br/>config session: diff → commit"| SW["11 Arista switches"]
+  PX -->|"eAPI/HTTPS · VRF MGMT<br/>config session: diff → commit"| SW["12 Arista switches"]
 ```
 
 - Proxy minions run as `salt-proxy@<id>` systemd units with a drop-in that waits for the network and the master and restarts on failure.

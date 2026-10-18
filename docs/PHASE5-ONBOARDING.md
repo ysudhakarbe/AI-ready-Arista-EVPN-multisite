@@ -1,6 +1,6 @@
 # Phase 5: bring every device in the lab under Salt
 
-Goal: all 11 Arista switches (DC1 + DC2 + DC3) are rendered from `pillar/fabric.sls` and applied with
+Goal: all 12 Arista switches (DC1 + DC2 + DC3) are rendered from `pillar/fabric.sls` and applied with
 `state.apply fabric`, exactly like the 8 DC1 switches since Phase 4. internet-rtr (Cisco IOSv) joins as a
 managed NAPALM device (backups, show commands, drift checks), outside the EVPN template.
 
@@ -96,7 +96,7 @@ The systemd drop-in from Phase 4 (`salt-proxy@.service.d/override.conf`) applies
 
 ```bash
 cd ~/fabric/salt-fabric
-sudo tools/backup.sh                      # backups/<minion>.cfg for all 11
+sudo tools/backup.sh                      # backups/<minion>.cfg for all 12
 git add backups && git commit -m "Running configs before Phase 5 apply"
 ```
 
@@ -152,8 +152,8 @@ puts the Step 4 config back, atomically.
 ## Step 8: prove zero drift and close the phase
 
 ```bash
-sudo salt -N switches state.apply fabric test=True --state-output=changes   # "Configuration already applied!" x 11
-sudo tools/backup.sh && git add -A && git commit -m "Phase 5: all 11 switches Salt-managed"
+sudo salt -N switches state.apply fabric test=True --state-output=changes   # "Configuration already applied!" x 12
+sudo tools/backup.sh && git add -A && git commit -m "Phase 5: all 12 switches Salt-managed"
 git tag phase5-complete
 sudo tar czf ~/salt-backup-phase5.tgz /srv/salt /srv/pillar /etc/salt/master.d ~/fabric/salt-fabric
 ```
