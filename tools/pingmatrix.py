@@ -48,9 +48,23 @@ def refresh_ports():
         for name in VPCS:
             if name in live:
                 VPCS[name] = (live[name], VPCS[name][1])
-        return "ports from EVE API"
+        json.dump({n: p for n, (p, ip) in VPCS.items()}, open(CACHE, "w"))
+        return "ports refreshed from EVE API and saved (your EVE web session was logged out)"
     except Exception as e:
         return f"EVE API not used ({e.__class__.__name__}); using ports in the script"
+
+
+CACHE = os.path.expanduser("~/.eve-ports.json")
+
+
+def load_cache():
+    try:
+        for n, p in json.load(open(CACHE)).items():
+            if n in VPCS:
+                VPCS[n] = (p, VPCS[n][1])
+        return "ports from cache (~/.eve-ports.json)"
+    except Exception:
+        return "no port cache yet; using ports in the script (run with --refresh once)"
 
 
 EXTRA = {"SRV-1": "10.40.40.70", "inet-rtr": "172.16.100.1", "8.8.8.8": "8.8.8.8"}
@@ -85,9 +99,10 @@ def run(name):
 
 
 def main():
-    srcs = sys.argv[1:] or list(VPCS)
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    srcs = args or list(VPCS)
     t0 = time.time()
-    print(refresh_ports())
+    print(refresh_ports() if "--refresh" in sys.argv else load_cache())
     with ThreadPoolExecutor(max_workers=len(srcs)) as ex:
         res = dict(ex.map(run, srcs))
     cols = list(VPCS) + list(EXTRA)
@@ -97,7 +112,7 @@ def main():
     for s in srcs:
         r = res[s]
         if "_error" in r:
-            print(f"{s:10}  console error: {r['_error']}")
+            print(f"{s:10}  console error: {r['_error']}  -> ports changed? run: pingmatrix --refresh")
             fails += 1
             continue
         row = []
